@@ -2,7 +2,7 @@
 
 App360ID SDK helps you build engaging social apps and get more installs
 
-The App360ID iOS SDK supports iOS version 6.0 and above.
+The App360ID Android SDK supports Android 6.0 and above.
 
 #Requirements
 
@@ -41,24 +41,58 @@ Put jar realease to libs folder
 
 ##Initialize
 ```java
+/**
+*Initialize SDK
+* @param appId application id
+* @param appSecret application secret key
+*/
+public void initialize(String appId,String appSecret)
+```
+
+For example:
+
+```java
 App360IDSDK app360IDSDK = new App360IDSDK(this);
-app360IDSDK.initial(clientId, appScret);
+app360IDSDK.initialize(clientId, appScret);
 ```
 
 ##Login
-
 ```java
-app360IDSDK.login(scope, false, new App360IDSDK.WebViewSDKListener() {
-        @Override
-        public void onSuccess(App360User app360User){
-           Toast.makeText(SDKApplication.getInstance().getApplicationContext(), "getuser success " + app360User.getEmail(), Toast.LENGTH_SHORT).show();
-        }
+/**
+ * execute login follow : if session valid then call {@link #getUserInfo(String)}, or start  {@link vn.mog.openidsdk.activity.WebViewAtivity} activity
+ * @param scope                 Scope (permission) want to access
+ * @param shouldDisplayUI       Should SDK show form for user login.
+ * @param app360IDSDKListener   callback
+ */
+ public void login(String scope,boolean shouldDisplayUI,App360IDSDKListener app360IDSDKListener)
+```
+
+For example:
+```java
+app360IDSDK.login(scope, false, new App360IDSDK.App360IDSDKListener() {
+         @Override
+         public void onSuccess(App360User app360User{
+              Toast.makeText(SDKApplication.getInstance().getApplicationContext(), "getuser success " + app360User.getEmail(), Toast.LENGTH_SHORT).show();
+         }
 
          @Override
-        public void onFail(App360IdSdkError error) {
-            Toast.makeText(SDKApplication.getInstance().getApplicationContext(), "login app360id get fail cause " + error.getErrorCode(), Toast.LENGTH_SHORT).show();
-        }
+         public void onFail(App360IdSdkError error) {
+              Toast.makeText(SDKApplication.getInstance().getApplicationContext(), "login app360id get fail cause " + error.getErrorCode(), Toast.LENGTH_SHORT).show();
+         }
 });
+```
+
+##Logout
+```java
+/**
+ * Clear all sdk session.
+ */
+ public void logout()
+```
+
+For example:
+```java
+app360IDSDK.logout();
 ```
 
 
