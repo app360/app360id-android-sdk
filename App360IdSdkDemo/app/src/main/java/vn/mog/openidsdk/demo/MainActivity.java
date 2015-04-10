@@ -6,11 +6,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import vn.mog.openidsdk.App360IDSDK;
-import vn.mog.openidsdk.App360IdSdkError;
-import vn.mog.openidsdk.SDKApplication;
-import vn.mog.openidsdk.entity.App360User;
-import vn.mog.openidsdk.util.DebugLog;
+import vn.mog.app360idsdk.App360IDSDK;
+import vn.mog.app360idsdk.App360IdSdkError;
+import vn.mog.app360idsdk.SDKApplication;
+import vn.mog.app360idsdk.entity.App360User;
+import vn.mog.app360idsdk.util.DebugLog;
 
 
 public class MainActivity extends ActionBarActivity {
