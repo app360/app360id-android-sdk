@@ -1,4 +1,4 @@
-package vn.mog.openidsdk.demo;
+package vn.mog.app360idsdk.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import vn.mog.app360idsdk.App360IdSdkError;
 import vn.mog.app360idsdk.SDKApplication;
 import vn.mog.app360idsdk.entity.App360User;
 import vn.mog.app360idsdk.util.DebugLog;
+import vn.mog.openidsdk.demo.R;
 
 
 public class MainActivity extends ActionBarActivity {
