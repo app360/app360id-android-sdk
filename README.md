@@ -37,7 +37,15 @@ To handle login flow, the project's directory should contain a properties file n
 
 #Integrate SDK into your project
 
-Put app360idsk.jar,gson-2.3.1.jar, volley-1.0.15.jar to libs folder . If you use android studio ,  right click it and choose `add as library`
+## Add Library
+Put 
+	- app360idsk.jar
+	- gson-2.3.1.jar
+	- volley-1.0.15.jar
+
+to libs folder . If you use android studio ,  right click it and choose `add as library`
+
+## Add config file
 Add `app360.properties` to `assets` folder :
 ```
 redirect_uri=http://example.com
