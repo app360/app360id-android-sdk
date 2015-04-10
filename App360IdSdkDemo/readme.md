@@ -43,7 +43,7 @@ Add `app360.properties` to `assets` folder :
 redirect_uri=http://example.com
 ```
 Set your application extends SDKApplication and add `vn.mog.openidsdk.activity.WebViewAtivity` to your manifest:
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.mog.openidsdk.demo" >
