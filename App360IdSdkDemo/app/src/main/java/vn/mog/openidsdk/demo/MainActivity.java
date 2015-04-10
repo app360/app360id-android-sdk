@@ -16,7 +16,7 @@ import vn.mog.openidsdk.util.DebugLog;
 public class MainActivity extends ActionBarActivity {
 
     private App360IDSDK app360IDSDK;
-    private String clientId="your application id";
+    private String clientId="1004041620475855918222";
     private String appSecret ="your application secret key";
     private String scope="basic";
 
