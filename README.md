@@ -2,7 +2,7 @@
 
 App360ID SDK helps you build engaging social apps and get more installs
 
-The App360ID Android SDK supports Android 6.0 and above.
+The App360ID Android SDK supports Android 2.3 and above.
 
 #Requirements
 
@@ -17,11 +17,11 @@ The App360ID Android SDK supports Android 6.0 and above.
 Firstly, clone or download this repository to your machine.
 
 - `git clone https://github.com/app360/app360id-android-sdk.git`
-- Or, download from https://github.com/app360/app360id-android-sdk/releases
+- `Or, download from https://github.com/app360/app360id-android-sdk/releases`
 
-Open build.gradle inside demo project, find `initializeWithApplicationId` line and replace the placeholders with your application credentials.
+Open build.gradle inside demo project, find `MainActivity` class in demo module and modify `clientId`,`appSecret` with your application credentials.
 
-Run the project. The app demonstrates capability of App360ID SDK.
+Run `myapplication` module.
 
 #Setup your project
 
@@ -36,8 +36,40 @@ To using any function of App360SDK, you need to configure application id and sec
 To handle login flow, the project's directory should contain a properties file named `app360.properties` and put it into assets folder. The file should contain `redirect_uri`. `redirect_uri` can be configure on App360 Developer. You can find it in application detail page, Information tab, OAuth2 section (OAuth2 Redirect URIs)
 
 #Integrate SDK into your project
-Set your appplication extends SDKApplication 
-Put jar realease to libs folder 
+
+Put jar release to libs folder . If you use android studio ,  right click it and choose `add as library`
+Add `app360.properties` to `assets` folder :
+```
+redirect_uri=http://example.com
+```
+Set your application extends SDKApplication and add `vn.mog.openidsdk.activity.WebViewAtivity` to your manifest:
+```
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="vn.mog.openidsdk.demo" >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:name="vn.mog.openidsdk.SDKApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="vn.mog.openidsdk.activity.WebViewAtivity"
+            />
+    </application>
+
+</manifest>
+```
 
 ##Initialize
 ```java
@@ -52,7 +84,7 @@ public void initialize(String appId,String appSecret)
 For example:
 
 ```java
-App360IDSDK app360IDSDK = new App360IDSDK(this);
+App360IDSDK app360IDSDK = new App360IDSDK(context);
 app360IDSDK.initialize(clientId, appScret);
 ```
 
@@ -69,7 +101,7 @@ app360IDSDK.initialize(clientId, appScret);
 
 For example:
 ```java
-app360IDSDK.login(scope, false, new App360IDSDK.App360IDSDKListener() {
+app360IDSDK.login(scope, true, new App360IDSDK.App360IDSDKListener() {
          @Override
          public void onSuccess(App360User app360User{
               Toast.makeText(SDKApplication.getInstance().getApplicationContext(), "getuser success " + app360User.getEmail(), Toast.LENGTH_SHORT).show();
@@ -120,12 +152,6 @@ They are a pair of key, used to authorize your app (game) with SDK's server.
 2. Login if you already have an account or register a new one
 3. Open your application in App360 dashboard, select Information tab
 4. All key you need will be there
-
-**How much does the App360ID Android SDK add to my application size?**
-
-The latest version of the SDK weighs less than 1MB. But this isn't the size which will be added to your archive when submitted to iTunes.
-Based on several tests, it should adds below 1MB depending of the size of your application.
-The bigger your app is, the less the App360ID Android SDK will have an impact on the final size.
 
 #Support
 Please contact [us](mailto:support@app360.vn) for general inquiries.
