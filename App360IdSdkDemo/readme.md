@@ -50,21 +50,11 @@ Set your application extends SDKApplication and add `vn.mog.openidsdk.activity.W
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:name="vn.mog.openidsdk.SDKApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name="vn.mog.openidsdk.activity.WebViewAtivity"
+        android:name="vn.mog.app360idsdk.SDKApplication"
+        ....
+         >
+        ....
+        <activity android:name="vn.mog.app360idsdk.activity.LoginActivity"
             />
     </application>
 
